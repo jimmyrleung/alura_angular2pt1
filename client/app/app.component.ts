@@ -6,8 +6,8 @@ import { Component } from '@angular/core'; // Procura nos node_modules o @angula
     templateUrl: './app/app.component.html' // A partir da raíz (client) busca o template html
 })
 
-class AppComponent {
-    constructor(parameters) {
+export class AppComponent {
+    constructor() {
 
     }
 }
