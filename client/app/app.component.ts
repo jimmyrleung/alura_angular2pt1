@@ -1,13 +1,14 @@
 // Component: É um decorator (é análogo a uma annotation)
-import { Component } from '@angular/core'; // Procura nos node_modules o @angular/core
+// Inject: Módulo de injeção de dependências (não é necessário se usarmos a sintaxe de tipagem do javascript)
+import { Component, Inject } from '@angular/core'; // Procura nos node_modules o @angular/core
+import { Http } from '@angular/http';
 
 @Component({
+    moduleId: module.id, // id gerado pelo System.js
     selector: 'app', // Como iremos acessar nosso componente nas views (<app>),
-    templateUrl: './app/app.component.html' // A partir da raíz (client) busca o template html
+    templateUrl: './app.component.html'
 })
 
 export class AppComponent {
-    constructor() {
 
-    }
 }

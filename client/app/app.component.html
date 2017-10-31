@@ -1,6 +1,24 @@
-<div class="jumbotron">
-    <h1 class="text-center">AluraPic</h1>
+<!-- indica que o conteúdo das rotas deve ser colocado aqui -->
+<div class="jumbotron" style="margin-bottom: 0px;">
+    <h1 class="text-center" style="margin-bottom: 0px;">AluraPic</h1>
 </div>
-<div class="container">
-    <img class="img-responsive center-block" src="img/leao.jpg" alt="leao" />
-</div>
+<nav class="navbar navbar-default" role="navigation">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <a [routerLink]="['/']" class="navbar-brand">Alura Pic</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+            <li>
+                <a [routerLink]="['/cadastro']">Nova Foto</a>
+            </li>
+        </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+</nav>
+<router-outlet></router-outlet>
