@@ -1,26 +1,32 @@
 <div class="container">
     <!-- No submit do form queremos chamar o cadastrar -->
     <!-- {{}} one way data binding -> Do modelo para view -->
-    <!-- (x) one way data binding -> Da view para o modelo -->
-    <form class="row" (submit)="cadastrar($event)">
+    <!-- (x) one way data binding -> Da view para o modelo - é também um event binding -->
+    <!-- Atrelamos o submit do form a função cadastrar do modelo -->
+    <form #meuForm="ngForm" class="row" (submit)="cadastrar($event)">
         <div class="col-md-offset-4 col-md-4">
             <div class="form-group">
                 <label>Título</label>
                 <!-- Para o titulo fizemos um two way databinding manual: em (input) atribuímos o value do evento atual. em [value] exibimos o valor do modelo -->
                 <!-- Pode ser útil em alguns casos -->
-                <input (input)="foto.titulo = $event.target.value || ''" [value]="foto.titulo" class="form-control" autocomplete="off">
+                <!-- <input name="titulo" (input)="foto.titulo = $event.target.value || ' '" [value]="foto.titulo" class="form-control" autocomplete="off"> -->
+
+
+                <input required #Titulo="ngModel" name="titulo" [(ngModel)]="foto.titulo" class="form-control" autocomplete="off">
+                <span *ngIf="Titulo.invalid" style="margin-top: 5px; color: red;">Título Obrigatório</span>
             </div>
             <div class="form-group">
                 <label>URL</label>
                 <!-- Para usar o ngModel temos que obrigatóriamente dar um name e também importar o FormsModule -->
-                <input name="url" [(ngModel)]="foto.url" class="form-control" autocomplete="off">
+                <input required #Url="ngModel" name="url" [(ngModel)]="foto.url" class="form-control" autocomplete="off">
+                <span *ngIf="Url.invalid" style="margin-top: 5px; color: red;">Url Obrigatória</span>
             </div>
             <div class="form-group">
                 <label>Descrição</label>
                 <textarea name="descricao" [(ngModel)]="foto.descricao" class="form-control" autocomplete="off"></textarea>
             </div>
 
-            <button type="submit" class="btn btn-primary">
+            <button type="submit" class="btn btn-primary" [disabled]="meuForm.form.invalid">
                 Salvar
             </button>
             <a [routerLink]="['']" class="btn btn-primary">Voltar</a>

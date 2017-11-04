@@ -14,5 +14,5 @@ export class FotoComponent {
     // Entretanto, só definir as propriedades não basta, precisamos usar o decorator @Input() para indicar que são Inputs para dados externos
     @Input() titulo: string;
     @Input() url: string;
-    descricao: string; // Não será recebida via input
+    @Input() descricao: string;
 }

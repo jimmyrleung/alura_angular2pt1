@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { FotoComponent } from '../foto/foto.component';
+import { Http, Headers } from '@angular/http';
 
 @Component({
     moduleId: module.id,
@@ -9,11 +10,22 @@ import { FotoComponent } from '../foto/foto.component';
 export class CadastroComponent {
 
     foto: FotoComponent = new FotoComponent();
+    http: Http;
+
+    constructor(http: Http) {
+        this.http = http;
+    }
 
     cadastrar(event) {
         event.preventDefault(); // Cancela o event default do submit
         console.log(this.foto);
-
+        let headers = new Headers();
+        headers.append("Content-type", "application/json");
+        this.http.post("v1/fotos", JSON.stringify(this.foto), { headers: headers })
+            .subscribe(() => {
+                console.log("Foto salva com sucesso!");
+                this.foto = new FotoComponent();
+            }, error => console.log(error));
     }
 
 }
